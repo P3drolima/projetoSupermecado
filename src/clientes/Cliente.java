@@ -1,3 +1,4 @@
+// Cliente.java
 package clientes;
 
 import java.util.ArrayList;
@@ -8,23 +9,21 @@ public class Cliente {
 
     private String nome;
     private int idade;
+    private List<CarrinhoCliente> produtos;
 
-    public Cliente() {
-
+    // Construtor
+    public Cliente(String nome) {
+        this.nome = nome;
+        this.produtos = new ArrayList<>();
     }
 
-    //Criando lista de produtos
-    private List<CarrinhoCliente> produtos = new ArrayList<CarrinhoCliente>();
-
-    public List<CarrinhoCliente> getProdutos() {
-        return produtos;
+    // Adiciona um item ao carrinho do cliente
+    public void adicionarItem(CarrinhoCliente item){
+        produtos.add(item);
     }
 
-    public void setProdutos(List<CarrinhoCliente> produtos) {
-        this.produtos = produtos;
-    }
+    // Getters e Setters
 
-    //Getters e Setters do Nome e idade
     public String getNome() {
         return nome;
     }
@@ -33,15 +32,8 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public int getIdade() {
-        return idade;
-    }
+    // Equals e Hashcode
 
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
-
-    //Equals e Hashcode
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -55,8 +47,8 @@ public class Cliente {
         return Objects.hash(nome, idade, produtos);
     }
 
+    // To String
 
-    //To String
     @Override
     public String toString() {
         return "Cliente{" +
@@ -66,5 +58,3 @@ public class Cliente {
                 '}';
     }
 }
-
-

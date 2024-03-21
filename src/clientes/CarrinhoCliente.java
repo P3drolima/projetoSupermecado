@@ -1,33 +1,46 @@
+// CarrinhoCliente.java
 package clientes;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class CarrinhoCliente {
 
-    private String produtos;
+    private List<String> produtos;
 
-    public java.lang.String getProdutos() {
+    public CarrinhoCliente(){
+        this.produtos = new ArrayList<>();
+    }
+
+    public List<String> getProdutos() {
         return produtos;
     }
 
-    public void setProdutos(java.lang.String produtos) {
+    public void setProdutos(List<String> produtos) {
         this.produtos = produtos;
     }
 
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        if (!super.equals(object)) return false;
-        CarrinhoCliente that = (CarrinhoCliente) object;
-        return java.util.Objects.equals(produtos, that.produtos);
+    // Adiciona um produto ao carrinho
+    public void adicionarProduto(String produto) {
+        produtos.add(produto);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CarrinhoCliente that = (CarrinhoCliente) o;
+        return Objects.equals(produtos, that.produtos);
+    }
+
+    @Override
     public int hashCode() {
-        return java.util.Objects.hash(super.hashCode(), produtos);
+        return Objects.hash(produtos);
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return "CarrinhoCliente{" +
                 "produtos=" + produtos +
                 '}';
